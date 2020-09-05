@@ -1,1 +1,1 @@
-﻿"%~dp0Topshelf.GettingStarted" start
+"%~dp0Topshelf.GettingStarted" start

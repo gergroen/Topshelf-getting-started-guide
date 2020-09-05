@@ -1,1 +1,1 @@
-﻿"%~dp0Topshelf.GettingStarted" install
+"%~dp0Topshelf.GettingStarted" install
