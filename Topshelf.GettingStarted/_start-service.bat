@@ -1,0 +1,1 @@
+﻿"%~dp0Topshelf.GettingStarted" start
