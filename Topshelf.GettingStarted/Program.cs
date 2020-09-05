@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Topself.GettingStarted
+namespace Topshelf.GettingStarted
 {
     class Program
     {
