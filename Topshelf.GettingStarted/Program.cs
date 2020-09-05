@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Timers;
+using Serilog;
 
 namespace Topshelf.GettingStarted
 {
@@ -7,6 +7,11 @@ namespace Topshelf.GettingStarted
     {
         static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
             var rc = HostFactory.Run(x =>
             {
                 x.Service<Service>(s =>
@@ -20,6 +25,7 @@ namespace Topshelf.GettingStarted
                 x.SetDescription("Topshelf Getting Started");
                 x.SetDisplayName("Topshelf.GettingStarted");
                 x.SetServiceName("Topshelf.GettingStarted");
+                x.UseSerilog();
             });
 
             var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
