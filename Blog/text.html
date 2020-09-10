@@ -16,6 +16,14 @@ This "Topshelf: Getting started guide" post will explain the basics and how to u
 <h3>Source code</h3>
 You can find the source code of this post on: <a href="https://github.com/gergroen/Topshelf-getting-started-guide">https://github.com/gergroen/Topshelf-getting-started-guide</a><br />
 <br />
+<h3>Post summary</h3>
+<li><a href="#InstallingNuGet">Installing NuGet</a></li>
+<li><a href="#CreateServiceClass">Create service class</a></li>
+<li><a href="#ConfigureLoggingAndWindowsService">Configure logging and windows service</a></li>
+<li><a href="#ControlTheWindowsService">Control the windows service</a></li>
+<li><a href="#TheResult">The result</a></li>
+<br />
+<h3><a name="InstallingNuGet"></a>Installing NuGet</h3>
 First create a .Net core console project and install the next nuget packages.
 <li><a href="https://www.nuget.org/packages/Serilog">Serilog</a></li>
 <li><a href="https://www.nuget.org/packages/Serilog.Sinks.Console">Serilog.Sinks.Console</a></li>
@@ -23,6 +31,7 @@ First create a .Net core console project and install the next nuget packages.
 <li><a href="https://www.nuget.org/packages/Topshelf">Topshelf</a></li>
 <li><a href="https://www.nuget.org/packages/Topshelf.Serilog">Topshelf.Serilog</a></li>
 <br />
+<h3><a name="CreateServiceClass"></a>Create service class</h3>
 Create a Service class. In this example the implementation has only log lines<br />
 but here you can add your own functionality for the windows service. 
 <pre class="prettyprint lang-cs">using Serilog;
@@ -44,6 +53,7 @@ namespace Topshelf.GettingStarted
 }
 </pre>
 <br />
+<h3><a name="ConfigureLoggingAndWindowsService"></a>Configure logging and windows service</h3>
 Logging and the windows service are configured in the Program.Main. 
 <pre class="prettyprint lang-cs">using System;
 using Serilog;
@@ -85,6 +95,7 @@ namespace Topshelf.GettingStarted
 This is the result when we run the console application.
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/Console.png" />
 <br />
+<h3><a name="ControlTheWindowsService"></a>Control the windows service</h3>
 To control the windows service we create the next batch files.<br />
 <br />
 _install-service.bat
@@ -97,7 +108,11 @@ _uninstall-service.bat
 <pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" uninstall</pre>
 Set the "Copy to output directory" of the batch files to "Copy if newer".<br />
 <br />
+<h3><a name="TheResult"></a>The result</h3>
 Now you can run _install-service.bat as Administrator to install the application as windows service.<br />
 If you open the Services console you will see the application in the list.
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/WindowsService.png" />
+<h3>Useful links:</h3>
+<a href="https://github.com/gergroen/Topshelf-getting-started-guide">Source code</a><br />
+<a href="http://topshelf-project.com/" target="_blank">Topshelf documentation</a>
 
