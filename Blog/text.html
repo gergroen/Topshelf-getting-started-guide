@@ -85,7 +85,7 @@ namespace Topshelf.GettingStarted
 This is the result when we run the console application.
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/Console.png" />
 <br />
-Create the next batch files.<br />
+To control the windows service we create the next batch files.<br />
 <br />
 _install-service.bat
 <pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" install</pre>
@@ -95,5 +95,9 @@ _stop-service.bat
 <pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" stop</pre>
 _uninstall-service.bat
 <pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" uninstall</pre>
+Set the "Copy to output directory" of the batch files to "Copy if newer".<br />
+<br />
+Now you can run _install-service.bat as Administrator to install the application as windows service.<br />
+If you open the Services console you will see the application in the list.
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/WindowsService.png" />
 
