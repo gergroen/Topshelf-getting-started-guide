@@ -22,7 +22,9 @@ First create a .Net core console project and install the next nuget packages.
 <li><a href="https://www.nuget.org/packages/Serilog.Sinks.File">Serilog.Sinks.File</a></li>
 <li><a href="https://www.nuget.org/packages/Topshelf">Topshelf</a></li>
 <li><a href="https://www.nuget.org/packages/Topshelf.Serilog">Topshelf.Serilog</a></li>
-
+<br />
+Create a Service class. In this example the implementation has only log lines<br />
+but here you can add your own functionality for the windows service. 
 <pre class="prettyprint lang-cs">using Serilog;
 
 namespace Topshelf.GettingStarted
@@ -42,6 +44,7 @@ namespace Topshelf.GettingStarted
 }
 </pre>
 <br />
+Logging and the windows service are configured in the Program.Main. 
 <pre class="prettyprint lang-cs">using System;
 using Serilog;
 
@@ -78,13 +81,19 @@ namespace Topshelf.GettingStarted
     }
 }
 </pre>
-<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" install</pre>
-<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" start</pre>
-<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" stop</pre>
-<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" uninstall</pre>
-
 <br />
+This is the result when we run the console application.
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/Console.png" />
 <br />
+Create the next batch files.<br />
+<br />
+_install-service.bat
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" install</pre>
+_start-service.bat
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" start</pre>
+_stop-service.bat
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" stop</pre>
+_uninstall-service.bat
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" uninstall</pre>
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/WindowsService.png" />
 
