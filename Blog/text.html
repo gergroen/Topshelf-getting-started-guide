@@ -16,6 +16,13 @@ This "Topshelf: Getting started guide" post will explain the basics and how to u
 <h3>Source code</h3>
 You can find the source code of this post on: <a href="https://github.com/gergroen/Topshelf-getting-started-guide">https://github.com/gergroen/Topshelf-getting-started-guide</a><br />
 <br />
+First create a .Net core console project and install the next nuget packages.
+<li><a href="https://www.nuget.org/packages/Serilog">Serilog</a></li>
+<li><a href="https://www.nuget.org/packages/Serilog.Sinks.Console">Serilog.Sinks.Console</a></li>
+<li><a href="https://www.nuget.org/packages/Serilog.Sinks.File">Serilog.Sinks.File</a></li>
+<li><a href="https://www.nuget.org/packages/Topshelf">Topshelf</a></li>
+<li><a href="https://www.nuget.org/packages/Topshelf.Serilog">Topshelf.Serilog</a></li>
+
 <pre class="prettyprint lang-cs">using Serilog;
 
 namespace Topshelf.GettingStarted
@@ -71,6 +78,11 @@ namespace Topshelf.GettingStarted
     }
 }
 </pre>
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" install</pre>
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" start</pre>
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" stop</pre>
+<pre class="prettyprint lang-cs">"%~dp0Topshelf.GettingStarted" uninstall</pre>
+
 <br />
 <img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/Console.png" />
 <br />
