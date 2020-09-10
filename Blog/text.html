@@ -16,3 +16,63 @@ This "Topshelf: Getting started guide" post will explain the basics and how to u
 <h3>Source code</h3>
 You can find the source code of this post on: <a href="https://github.com/gergroen/Topshelf-getting-started-guide">https://github.com/gergroen/Topshelf-getting-started-guide</a><br />
 <br />
+<pre class="prettyprint lang-cs">using Serilog;
+
+namespace Topshelf.GettingStarted
+{
+    public class Service
+    {
+        public void Start()
+        {
+            Log.Information("Started");
+        }
+
+        public void Stop()
+        {
+            Log.Information("Stopped");
+        }
+    }
+}
+</pre>
+<br />
+<pre class="prettyprint lang-cs">using System;
+using Serilog;
+
+namespace Topshelf.GettingStarted
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            var rc = HostFactory.Run(x =>
+            {
+                x.Service<Service>(s =>
+                {
+                    s.ConstructUsing(name => new Service());
+                    s.WhenStarted(tc => tc.Start());
+                    s.WhenStopped(tc => tc.Stop());
+                });
+                x.RunAsLocalSystem();
+
+                x.SetDescription("Topshelf Getting Started");
+                x.SetDisplayName("Topshelf.GettingStarted");
+                x.SetServiceName("Topshelf.GettingStarted");
+                x.UseSerilog();
+            });
+
+            var exitCode = (int)Convert.ChangeType(rc, rc.GetTypeCode());
+            Environment.ExitCode = exitCode;
+        }
+    }
+}
+</pre>
+<br />
+<img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/Console.png" />
+<br />
+<img border="0" src="https://github.com/gergroen/Topshelf-getting-started-guide/raw/master/Blog/Screenshots/WindowsService.png" />
+
